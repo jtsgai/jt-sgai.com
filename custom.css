@@ -7,6 +7,10 @@ canvas[data-id="tsparticles"] {
   height: 100% !important;
   top: 0 !important;
   left: 0 !important;
-  z-index: 10 !important; /* 提高z-index值 */
+  z-index: 100 !important; /* 提高z-index值 */
   pointer-events: none !important; /* 确保点击事件穿透到下层元素 */
+}
+/* 确保背景色适合显示粒子 */
+body {
+  background-color: #0a1929 !important; /* 深蓝色背景 */
 }
