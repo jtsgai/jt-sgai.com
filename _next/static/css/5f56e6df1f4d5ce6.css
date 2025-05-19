@@ -5,7 +5,7 @@
 .highlight-text {
   white-space: nowrap !important;  /* 禁止换行 */
   display: inline-block !important;
-  min-width: 280px;               /* 根据实际文本长度调整 */
+  min-width: 350px;               /* 根据实际文本长度调整 */
 }
 /* 移动端适配 */
 @media (max-width: 480px) {
