@@ -5,9 +5,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     135deg,
-    #0a0a1a 0%,    /* 深蓝底色 */
-    #1a1a3a 50%,   /* 蓝紫色中间过渡 */
-    #2a2a5a 100%   /* 浅蓝紫色高潮 */
+    #0a0a2a 0%,    /* 恢复原建议的星空深蓝 */
+    #1a1a4a 50%,   /* 增强与紫色LOGO的协调性 */
+    #2a2a6a 100%   /* 提升亮部科技感 */
   );
   min-height: 100vh;       /* 确保全屏覆盖 */
   background-attachment: fixed; /* 防止滚动时渐变破裂 */
