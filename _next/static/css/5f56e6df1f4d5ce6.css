@@ -1,67 +1,98 @@
-/* _next/static/css/5f56e6df1f4d5ce6.css */
-/* 集成原有Tailwind基础 + 截图2的视觉优化 + 代码仓库样式适配 */
+<!DOCTYPE html>
+<html>
+<head>
+    <title>终极粒子效果</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-/* 新增科技感变量 (兼容原有变量体系) */
-:root {
-  --space-dark: #0a0a2a;     /* 星空深蓝 */
-  --space-mid: #1a1a4a;      /* 宇宙紫 */
-  --space-light: #2a2a6a;    /* 科技蓝紫 */
-  --text-glow: 0 4px 6px rgba(79,156,249,0.3); /* 按钮光效 */
-}
+        // 粒子配置 [1,2](@ref)
+        const particles = [];
+        const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD', '#D4A5A5'];
+        const particleCount = 300;
 
-/* 背景渐变优化 (替换原有渐变) */
-body {
-  background: linear-gradient(
-    135deg,
-    var(--space-dark) 0%,
-    var(--space-mid) 50%,
-    var(--space-light) 100%
-  );
-  background-attachment: fixed;
-}
+        // 粒子类 [5](@ref)
+        class Particle {
+            constructor(x, y) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
 
-/* 文字增强 (补充到原有文字样式后) */
-.text-white {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  font-weight: 500;
-}
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                // 边界反弹 [2](@ref)
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                // 粒子逐渐缩小
+                if (this.size > 0.2) this.size -= 0.1;
+            }
 
-/* 按钮动态效果 (增强原有.btn-primary) */
-.btn-primary {
-  background: #4f9cf9 linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.15) 0%,
-    transparent 50%
-  );
-  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--text-glow);
-}
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-/* 宣传模块特殊处理 (新增独立样式块) */
-.hero-text {
-  letter-spacing: 0.03em;
-  filter: drop-shadow(var(--text-glow));
-}
+        // 初始化粒子
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
 
-/* 代码仓库界面适配 (保留原有文件树样式) */
-[class^="_next-static"]::before {
-  content: "▸";
-  color: #9d6dff;  /* 与LOGO色系呼应 */
-  margin-right: 0.5rem;
-}
+        // 动画循环
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                // 移除消失的粒子并补充新粒子 [5](@ref)
+                if (particle.size <= 0.2) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle());
+                }
+            });
+            requestAnimationFrame(animate);
+        }
 
-/* 移动端适配 (补充到媒体查询部分) */
-@media (max-width: 768px) {
-  body {
-    --gradient-angle: 90deg;
-  }
-  .hero-text {
-    background-size: 200% auto;
-  }
-}
+        // 鼠标交互：生成粒子流 [5](@ref)
+        canvas.addEventListener('mousemove', (e) => {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(e.clientX, e.clientY));
+            }
+        });
 
-/* 保留原有Tailwind工具类... */
-/* 此处保留用户提供的完整Tailwind CSS内容 */
+        // 启动
+        init();
+        animate();
+
+        // 窗口自适应
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
