@@ -5,11 +5,11 @@
 .slogan-text {
   white-space: nowrap;
   display: inline-block;
-  min-width: 280px; /* 根据文本长度调整 */
+  min-width: 240px; /* 根据文本长度调整 */
 }
 @media (max-width: 480px) {
   .slogan-text {
     font-size: 14px;
-    min-width: 240px;
+    min-width: 200px;
   }
 }
