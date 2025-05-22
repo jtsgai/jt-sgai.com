@@ -29,9 +29,9 @@ body {
         #00F2FE 50%,
         #FE53BB 75%,
         #FF0000 100%
-    );
-    background-size: 300% 300%;
-    animation: cyberGlow 8s ease infinite;
+    )!important;
+    background-size: 300% 300% !important;
+    animation: cyberGlow 8s ease infinite !important;
 }
 
 @keyframes cyberGlow {
