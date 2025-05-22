@@ -21,20 +21,16 @@
 
 
 body {
-    height: 100vh;
-    background: linear-gradient(
-        45deg,
-        #000000 0%,
-        #130F40 25%,
-        #00F2FE 50%,
-        #FE53BB 75%,
-        #FF0000 100%
-    );
-    background-size: 300% 300%;
-    animation: cyberGlow 8s ease infinite;
+     height: 100vh !important;
+    margin: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364) !important;
+    background-size: 400% 400% !important;
+    animation: cyberFlow 12s ease infinite !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes cyberGlow {
-    0%, 100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
