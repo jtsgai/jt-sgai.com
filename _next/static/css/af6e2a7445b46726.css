@@ -5,18 +5,14 @@
 body {
     height: 100vh;
     margin: 0;
-    background: linear-gradient(
-        135deg, 
-        #2A0C4E 0%,    
-        #4F0388 33%,   
-        #E65C00 100%    
-    ) !important;
-    background-size: 400% 400% !important;
-    animation: gradientFlow 15s ease infinite !important;
-    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364, #0f2027);
+    background-size: 500% 500%;
+    animation: techGradientShift 18s ease-in-out infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 
-@keyframes gradientFlow {
+@keyframes techGradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
