@@ -4,19 +4,20 @@
 
 body {
     height: 100vh;
+    margin: 0;
     background: linear-gradient(
-        45deg,
-        #000000 0%,
-        #130F40 25%,
-        #00F2FE 50%,
-        #FE53BB 75%,
-        #FF0000 100%
-    )!important;
-    background-size: 300% 300% !important;
-    animation: cyberGlow 8s ease infinite !important;
+        135deg, 
+        #2A0C4E 0%,    
+        #4F0388 33%,   
+        #E65C00 100%    
+    ) !important;
+    background-size: 400% 400% !important;
+    animation: gradientFlow 15s ease infinite !important;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-@keyframes cyberGlow {
-    0%, 100% { background-position: 0% 50%; }
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
