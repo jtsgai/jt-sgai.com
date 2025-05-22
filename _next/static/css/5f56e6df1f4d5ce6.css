@@ -96,3 +96,8 @@
     </script>
 </body>
 </html>
+// 动态绑定霓虹颜色
+document.querySelectorAll('.robot-card').forEach(card => {
+  const color = card.getAttribute('data-neon-color');
+  card.style.setProperty('--neon-color', color);
+});
