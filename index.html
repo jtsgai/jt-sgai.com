@@ -2,12 +2,18 @@
    <head> 
    <style>
 
-  /* 调整移动端文本大小，确保完整显示 */
-  @media (max-width: 768px) {
+  /* 新增平板断点（768px ~ 1024px） */
+@media (min-width: 768px) and (max-width: 1024px) {
   .hero-text {
-    font-size: 0.95rem;
-    overflow-x: auto;
-    display: inline-block;
+    font-size: 1.2rem;
+  }
+}
+
+/* 手机端专属样式 */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 1rem;
+    line-height: 1.5;
     padding: 0 1rem;
   }
 }
