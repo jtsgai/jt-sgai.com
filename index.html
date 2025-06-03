@@ -67,5 +67,43 @@
     }
   });
 </script>
+     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+<script>
+  function loadParticles() {
+    if (window.tsParticles && !document.getElementById('tsparticles')) {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'tsparticles';
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.zIndex = '999';
+      canvas.style.pointerEvents = 'none';
+      document.body.appendChild(canvas);
+
+      tsParticles.load('tsparticles', {
+        fullScreen: { enable: false }, // 因为我们自己设置了 canvas
+        particles: {
+          number: { value: 80 },
+          links: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 1 },
+          size: { value: 3 },
+          color: { value: "#ffffff" }
+        },
+        background: { color: "#000000" }
+      });
+
+      console.log("✅ 粒子重新加载");
+    }
+  }
+
+  // 页面加载时运行一次
+  window.addEventListener('load', loadParticles);
+
+  // 每次前进/后退（包括返回首页）时检查是否还存在粒子
+  window.addEventListener('popstate', loadParticles);
+</script>
      </body>
 </html>
