@@ -35,5 +35,37 @@
     }
   });
 </script>
+       <!-- 1. 粒子画布 -->
+<canvas id="tsparticles"></canvas>
+
+<!-- 2. 引入粒子库 -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+<!-- 3. 初始化粒子并提升层级 -->
+<script>
+  window.addEventListener('load', () => {
+    tsParticles.load("tsparticles", {
+      fullScreen: {
+        enable: true,
+        zIndex: -1
+      },
+      particles: {
+        number: { value: 80 },
+        links: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1 },
+        size: { value: 3 },
+        color: { value: "#ffffff" }
+      },
+      background: { color: "#000000" }
+    });
+
+    const canvas = document.getElementById('tsparticles');
+    if (canvas) {
+      canvas.style.zIndex = '999';
+      canvas.style.opacity = '1';
+      canvas.style.pointerEvents = 'none';
+    }
+  });
+</script>
      </body>
 </html>
