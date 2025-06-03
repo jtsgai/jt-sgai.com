@@ -62,7 +62,7 @@
     if (canvas) {
       canvas.style.zIndex = '999';
       canvas.style.opacity = '1';
-      canvas.style.pointerEvents = 'none';
+      canvas.style.pointerEvents = 'none' !important;
     }
   });
 </script>
@@ -79,7 +79,7 @@
       canvas.style.width = '100%';
       canvas.style.height = '100%';
       canvas.style.zIndex = '999';
-      canvas.style.pointerEvents = 'none';
+      canvas.style.pointerEvents = 'none' !important;
       document.body.appendChild(canvas);
 
       tsParticles.load('tsparticles', {
