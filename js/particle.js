@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function animate() {
-    ctx.fillStyle = 'rgba(10, 25, 47, 100)';
+    ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawConnections();
     particles.forEach(p => {
