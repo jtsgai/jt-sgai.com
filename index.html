@@ -26,7 +26,7 @@
   window.addEventListener('load', () => {
     const canvas = document.getElementById('tsparticles');
     if (canvas) {
-      canvas.style.zIndex = '999';         // 把层级调到前面
+      canvas.style.zIndex = '1';         // 把层级调到前面
       canvas.style.opacity = '1';          // 确保可见
       canvas.style.pointerEvents = 'none'; // 不影响点击操作
       console.log('✅ 粒子效果已提至前层');
@@ -47,7 +47,7 @@
     tsParticles.load("tsparticles", {
       fullScreen: {
         enable: true,
-        zIndex: -1
+        zIndex: 1
       },
       particles: {
         number: { value: 80 },
@@ -61,9 +61,9 @@
 
     const canvas = document.getElementById('tsparticles');
     if (canvas) {
-      canvas.style.zIndex = '999';
+      canvas.style.zIndex = '1';
       canvas.style.opacity = '1';
-      canvas.style.setProperty('pointer-events', 'none', 'important');
+      canvas.style.pointerEvents = 'none';
     }
   });
 </script>
@@ -79,8 +79,8 @@
       canvas.style.left = '0';
       canvas.style.width = '100%';
       canvas.style.height = '100%';
-      canvas.style.zIndex = '999';
-      canvas.style.setProperty('pointer-events', 'none', 'important');
+      canvas.style.zIndex = '1';
+      canvas.style.pointerEvents = 'none';
       document.body.appendChild(canvas);
 
       tsParticles.load('tsparticles', {
@@ -123,7 +123,7 @@
       background: { color: "#000000" }
     });
 
-    canvas.style.zIndex = '999';
+    canvas.style.zIndex = '1';
     canvas.style.pointerEvents = 'none';
   }
 
