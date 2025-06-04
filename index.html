@@ -141,7 +141,6 @@ main {
   </head>
     
   <body class="__variable_5cfdac __variable_9a8899 antialiased">
-<style="background: transparent;"><!-- 呼吸感渐变背景 -->
 
   <div class="breathing-background"></div>
 
@@ -283,13 +282,25 @@ function addParallaxEffect() {
     });
 }
 
-// 初始化
+// 确保页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM加载完成，开始创建特效");
     createStars();
     createConstellations();
     createParticles();
     addParallaxEffect();
 });
+
+// 备用初始化方法，如果DOMContentLoaded事件已经触发
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log("页面已加载，立即创建特效");
+    setTimeout(function() {
+        createStars();
+        createConstellations();
+        createParticles();
+        addParallaxEffect();
+    }, 1);
+}
 </script>
   
      </body>
