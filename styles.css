@@ -480,3 +480,23 @@ h1,h2,h3{overflow-wrap:break-word}
   .hero-hud{font-size:.56rem;bottom:.8rem}
   .hero-bg{object-position:center 38%}  /* favour subjects over foreground */
 }
+
+/* ============ v10: Tamil mobile hero — definitive fix (placed last, wins cascade) ============ */
+@media (max-width:640px){
+  .eyebrow{letter-spacing:.2em;font-size:.62rem}
+  .hero-copy .display{overflow-wrap:anywhere}
+}
+@media (max-width:640px) and (orientation:portrait){
+  :lang(ta) .hero-copy .display{
+    font-size:clamp(1.3rem,6vw,1.75rem) !important;
+    line-height:1.45;letter-spacing:0;
+    text-wrap:wrap;
+  }
+  :lang(ta) .hero-copy .display .kw{display:inline}
+  :lang(ta) .hero-sub{font-size:.85rem;line-height:1.85}
+  :lang(ta) .btn{font-size:.64rem;letter-spacing:.08em;padding:.7rem 1.1rem}
+  :lang(ta) .eyebrow{letter-spacing:.12em;font-size:.56rem}
+  :lang(ta) .display-2{font-size:clamp(1.2rem,5.2vw,1.6rem) !important}
+  :lang(ta) .panel-copy h3{font-size:clamp(1.05rem,4.4vw,1.4rem)}
+  :lang(ta) .letter-h{font-size:clamp(1.1rem,4.6vw,1.5rem)}
+}
