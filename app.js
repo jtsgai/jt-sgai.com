@@ -355,17 +355,22 @@
     requestAnimationFrame(measure);
 
     const SPEED = 0.6; /* ≈36 px/s */
+    let pos = null; /* float accumulator — iOS truncates fractional scrollLeft */
     function tick() {
       if (!paused && !reduced && half > 0) {
-        strip.scrollLeft += SPEED;                 /* reel advances continuously */
-        if (strip.scrollLeft >= half) strip.scrollLeft -= half;
+        if (pos === null) pos = strip.scrollLeft;
+        pos += SPEED;
+        if (pos >= half) pos -= half;
+        strip.scrollLeft = pos;
       }
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+    /* resync accumulator after any manual scroll/drag */
+    strip.addEventListener("scroll", () => { if (paused) pos = strip.scrollLeft; }, { passive: true });
 
     function pause() { paused = true; clearTimeout(resumeTimer); }
-    function resumeSoon(ms) { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => { paused = false; }, ms); }
+    function resumeSoon(ms) { clearTimeout(resumeTimer); resumeTimer = setTimeout(() => { pos = strip.scrollLeft; paused = false; }, ms); }
 
     strip.addEventListener("mouseenter", pause);
     strip.addEventListener("mouseleave", () => resumeSoon(400));
