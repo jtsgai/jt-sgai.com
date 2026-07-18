@@ -468,3 +468,15 @@ h1,h2,h3{overflow-wrap:break-word}
   :lang(ta) .display{font-size:clamp(1.5rem,8.4vw,2rem)}
   :lang(ta) .hero-hud{display:none}
 }
+
+/* ============ v9: mobile hero fit ============ */
+@media (max-width:640px) and (orientation:portrait){
+  .hero{padding:5.2rem 1.1rem 4.6rem}
+  .hero-copy .display{font-size:clamp(2rem,9.5vw,2.7rem);margin:1rem 0 1.2rem}
+  .hero-sub{font-size:.92rem}
+  .hero-actions{margin-top:1.8rem;gap:.7rem}
+  .btn{padding:.75rem 1.4rem;font-size:.72rem}
+  .arcs{width:120vmin;opacity:.55}      /* ring reads as ambience, not cropped element */
+  .hero-hud{font-size:.56rem;bottom:.8rem}
+  .hero-bg{object-position:center 38%}  /* favour subjects over foreground */
+}

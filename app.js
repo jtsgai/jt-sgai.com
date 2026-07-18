@@ -270,16 +270,31 @@
   }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-  /* ---------- hero background video ---------- */
+  /* ---------- hero media: portrait assets on phones, landscape otherwise ---------- */
+  const portrait = matchMedia("(orientation: portrait)").matches;
+
+  const heroBg = document.querySelector(".hero-bg");
+  if (heroBg && portrait) {
+    const probe = new Image();
+    probe.onload = () => { heroBg.src = "assets/ph_hero_m.jpg"; };
+    probe.src = "assets/ph_hero_m.jpg";   /* fallback: keep landscape if missing */
+  }
+
   const heroVideo = document.getElementById("heroVideo");
   if (heroVideo && !reduced) {
-    heroVideo.src = "gen/hero.mp4";
+    const sources = portrait ? ["gen/hero_m.mp4", "gen/hero.mp4"] : ["gen/hero.mp4"];
+    let si = 0;
+    function tryNext() {
+      if (si >= sources.length) { heroVideo.remove(); return; }
+      heroVideo.src = sources[si++];
+      heroVideo.load();
+    }
     heroVideo.addEventListener("canplay", () => {
       heroVideo.classList.add("on");
       heroVideo.play().catch(() => {});
     }, { once: true });
-    heroVideo.addEventListener("error", () => heroVideo.remove(), { once: true });
-    heroVideo.load();
+    heroVideo.addEventListener("error", tryNext);
+    tryNext();
   }
 
   /* ---------- hover-play media (shared helper) ---------- */
