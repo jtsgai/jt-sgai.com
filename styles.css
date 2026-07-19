@@ -552,3 +552,6 @@ h1,h2,h3{overflow-wrap:break-word}
   display:flex;flex-direction:column;align-items:center;
 }
 .lab .sect-head > *{text-align:center}
+
+/* ============ v20: sentence-per-line across all languages ============ */
+.panel-copy p,.belief p,.next-p{text-wrap:wrap}  /* <br> now controls the rag */
