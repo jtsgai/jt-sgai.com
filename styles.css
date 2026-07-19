@@ -546,3 +546,9 @@ h1,h2,h3{overflow-wrap:break-word}
   margin-inline:auto;
   text-wrap:wrap;             /* drop balance here: it was nudging centered lines */
 }
+
+/* ============ v19: lab head centering — flex guarantee ============ */
+.lab .sect-head{
+  display:flex;flex-direction:column;align-items:center;
+}
+.lab .sect-head > *{text-align:center}
