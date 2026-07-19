@@ -530,3 +530,11 @@ h1,h2,h3{overflow-wrap:break-word}
   text-wrap:balance;   /* even line lengths: kills widows & ragged edges; Safari 17.4+ */
 }
 .letter-p{text-wrap:pretty}  /* letter reads better with natural book-style rag */
+
+/* ============ v17: section heads hard-centered · zh sentence-per-line support ============ */
+.sect-head,.sect-head .eyebrow,.sect-head .display-2,.sect-head p{text-align:center}
+.sect-sub{margin-inline:auto}
+/* sentence-per-line paragraphs: drop balance so <br> controls the rag */
+:lang(zh-CN) .panel-copy p,
+:lang(zh-CN) .belief p,
+:lang(zh-CN) .next-p{text-wrap:wrap}
