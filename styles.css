@@ -504,3 +504,19 @@ h1,h2,h3{overflow-wrap:break-word}
 /* ============ v11: line-break separator ============ */
 .sep{display:inline}
 @media (min-width:560px){.sep{display:none}}
+
+/* ============ v12: typographic polish ============ */
+/* Latin display: slight negative tracking (kept off CJK/Tamil) */
+:lang(en) .display,:lang(ms) .display{letter-spacing:-.015em}
+:lang(en) .display-2,:lang(ms) .display-2{letter-spacing:-.01em}
+:lang(en) .panel-copy h3,:lang(ms) .panel-copy h3{letter-spacing:-.01em}
+/* body rhythm */
+.panel-copy p{line-height:1.85}
+.belief p{line-height:1.85}
+.hero-sub{max-width:31em}
+/* mobile sep renders as a clean single space */
+.sep{white-space:pre}
+/* frame titles: a touch of air */
+.frame b{letter-spacing:.02em}
+/* keep CJK punctuation from starting a line awkwardly */
+:lang(zh-CN) p,:lang(zh-CN) h1,:lang(zh-CN) h2,:lang(zh-CN) h3{line-break:strict}
