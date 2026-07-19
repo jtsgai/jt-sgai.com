@@ -538,3 +538,11 @@ h1,h2,h3{overflow-wrap:break-word}
 :lang(zh-CN) .panel-copy p,
 :lang(zh-CN) .belief p,
 :lang(zh-CN) .next-p{text-wrap:wrap}
+
+/* ============ v18: bulletproof subtitle centering ============ */
+.sect-sub{
+  width:fit-content;          /* box shrinks to text, then centers itself */
+  max-width:34em;
+  margin-inline:auto;
+  text-wrap:wrap;             /* drop balance here: it was nudging centered lines */
+}
