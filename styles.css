@@ -572,3 +572,14 @@ h1,h2,h3{overflow-wrap:break-word}
 
 /* ============ v24: THE fix — center the head box itself (root cause of "偏左") ============ */
 .sect-head{margin-inline:auto}
+
+/* ============ v25: film frames as entrances ============ */
+.frame-cta{
+  margin-left:auto;flex:0 0 auto;
+  font-family:var(--grot);font-size:.66rem;letter-spacing:.2em;
+  color:var(--amber);text-transform:uppercase;
+  opacity:0;transform:translateX(-6px);transition:.35s;
+}
+.frame:hover .frame-cta,.frame:focus-within .frame-cta{opacity:1;transform:none}
+@media (hover:none){.frame-cta{opacity:1;transform:none}}  /* mobile: always visible */
+.frame figcaption{align-items:baseline}

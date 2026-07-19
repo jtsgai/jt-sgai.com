@@ -5,6 +5,7 @@
   /* ---------- i18n ---------- */
   const I18N = {
     en: {
+      f_open: "Open study →",
       lt_eyebrow: "A LETTER TO FUTURE FAMILIES",
       lt_h: "To the family we haven't met yet",
       lt_p: "Hello. When you read this letter, AI may not yet have entered your home; but I believe that day is not far away. I founded JT M&C not to build smarter machines, but so that whenever you are in need — a lamp in the late night, a greeting after a long absence, a conversation in solitude — something gentle is present.<br>Technology grows old; companionship does not.",
@@ -50,6 +51,7 @@
       _title: "JT M&C — Let AI Accompany Everyone in Need"
     },
     zh: {
+      f_open: "进入作品 →",
       lt_eyebrow: "给未来家庭的一封信",
       lt_h: "致我们尚未谋面的家庭",
       lt_p: "你好。当你读到这封信时,AI 也许还没有走进你的家;但我相信,那一天不会太远。我创办 JT M&C,不是为了制造更聪明的机器,而是希望在你需要的时候——深夜的一盏灯、久别后的一句问候、独处时的一段对话——总有什么,温柔地在场。<br>技术会过时,陪伴不会。",
@@ -95,6 +97,7 @@
       _title: "JT M&C — 让 AI 陪伴每一个需要的人"
     },
     ms: {
+      f_open: "Buka kajian →",
       lt_eyebrow: "SEPUCUK SURAT UNTUK KELUARGA MASA DEPAN",
       lt_h: "Buat keluarga yang belum kami temui",
       lt_p: "Salam sejahtera. Ketika anda membaca surat ini, mungkin AI belum hadir di rumah anda; tetapi saya percaya hari itu tidak lama lagi. Saya menubuhkan JT M&C bukan untuk membina mesin yang lebih pintar, tetapi supaya setiap kali anda memerlukan — lampu di larut malam, sapaan selepas lama berpisah, perbualan di kala sendirian — ada sesuatu yang lembut hadir di sisi.<br>Teknologi akan lapuk; teman tidak.",
@@ -140,6 +143,7 @@
       _title: "JT M&C — Biar AI Menemani Setiap Insan"
     },
     ta: {
+      f_open: "பயிற்சியைத் திற →",
       lt_eyebrow: "எதிர்கால குடும்பங்களுக்கு ஒரு கடிதம்",
       lt_h: "இன்னும் சந்திக்காத குடும்பத்திற்கு",
       lt_p: "வணக்கம். இந்தக் கடிதத்தை நீங்கள் படிக்கும் போது, AI இன்னும் உங்கள் வீட்டிற்குள் வந்திருக்காமல் இருக்கலாம்; ஆனால் அந்த நாள் தொலைவில் இல்லை என நம்புகிறேன். புத்திசாலி இயந்திரங்களை உருவாக்க அல்ல — நள்ளிரவின் ஒரு விளக்கு, நீண்ட பிரிவுக்குப் பின் ஒரு வாழ்த்து, தனிமையில் ஒரு உரையாடல் — தேவைப்படும் ஒவ்வொரு தருணத்திலும் மென்மையான ஏதோ ஒன்று அருகில் இருக்க வேண்டும் என்பதற்காகவே JT M&C-ஐ நிறுவினேன்.<br>தொழில்நுட்பம் பழையதாகும்; துணை ஆகாது.",
@@ -423,6 +427,19 @@
       strip.addEventListener(ev, () => { down = false; resumeSoon(2500); })
     );
     strip.addEventListener("click", e => { if (movedFlag) e.preventDefault(); }, true);
+    /* frames are entrances: click navigates (drag-safe) */
+    strip.addEventListener("click", e => {
+      if (movedFlag) return;
+      const fr = e.target.closest(".frame[data-href]");
+      if (fr) location.href = fr.dataset.href;
+    });
+    strip.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        const fr = e.target.closest(".frame[data-href]");
+        if (fr) location.href = fr.dataset.href;
+      }
+    });
+
   }
 
 
