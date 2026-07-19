@@ -6,10 +6,10 @@
   const I18N = {
     en: {
       lt_eyebrow: "A LETTER TO FUTURE FAMILIES",
-      lt_h: "To the family we haven’t met yet",
+      lt_h: "To the family we haven\u2019t met yet",
       lt_p: "Hello. When you read this letter, AI may not yet have entered your home; but I believe that day is not far away. I founded JT M&C not to build smarter machines, but so that whenever you are in need — a lamp in the late night, a greeting after a long absence, a conversation in solitude — something gentle is present. Technology grows old; companionship does not.",
       lt_sign: "— Jerry · Singapore",
-      r_cta: "If your organisation serves elders or anyone in need of company, we’d love to talk →",
+      r_cta: "If your organisation serves elders or anyone in need of company, we\u2019d love to talk →",
       nav_products: "Products", nav_lab: "Film Lab", nav_manifesto: "We Believe", nav_next: "Next Chapter",
       hero_h1: "Let AI <span class=\"kw\">accompany</span><br>everyone in need",
       hero_sub: "We believe intelligence will enter every home — not as a machine, but as a companion.",
@@ -22,7 +22,7 @@
       pd1_t: "Emotional Companion Robot",
       pd1_p: "Understands human emotion, offering warm company and support. Designed for elders and anyone in need of comfort — it replaces no one; it is simply there when you need it.",
       pd2_t: "AI Interactive Assistant",
-      pd2_p: "Advanced language understanding that hears complex requests — and what’s between the lines. From schedules to sparks of inspiration, the most capable hands in daily life.",
+      pd2_p: "Advanced language understanding that hears complex requests — and what\u2019s between the lines. From schedules to sparks of inspiration, the most capable hands in daily life.",
       pd3_t: "Intelligent Data Analysis",
       pd3_p: "Machine learning that distills value from oceans of data, turning uncertainty into confident decisions and lighting the next step for business.",
       pd4_t: "Universe Exploration Simulator",
