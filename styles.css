@@ -520,3 +520,13 @@ h1,h2,h3{overflow-wrap:break-word}
 .frame b{letter-spacing:.02em}
 /* keep CJK punctuation from starting a line awkwardly */
 :lang(zh-CN) p,:lang(zh-CN) h1,:lang(zh-CN) h2,:lang(zh-CN) h3{line-break:strict}
+
+/* ============ v15: balanced rag for short paragraphs (Safari-safe) ============ */
+.panel-copy p,
+.belief p,
+.sect-sub,
+.hero-sub,
+.next-p{
+  text-wrap:balance;   /* even line lengths: kills widows & ragged edges; Safari 17.4+ */
+}
+.letter-p{text-wrap:pretty}  /* letter reads better with natural book-style rag */
