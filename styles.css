@@ -565,3 +565,7 @@ h1,h2,h3{overflow-wrap:break-word}
 @media (max-width:860px){
   .panel-copy p{font-size:.92rem}
 }
+
+/* ============ v23: wider measures for Malay-length sentences ============ */
+.sect-sub{max-width:46em}   /* p_sub / l_sub: fit one line incl. Malay */
+.belief{max-width:53rem}    /* m_p mission line fits unwrapped */
