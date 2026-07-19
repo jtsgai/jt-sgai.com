@@ -37,7 +37,7 @@
       f5_t: "Abstract", f5_p: "The shape of technology is decided by imagination.",
       v_h: "Technology should be warm",
       v_p: "AI for all is not a slogan. We weave intelligence into daily life, making it part of the home — bringing convenience, and the warmth of company.",
-      m_h: "Leave the complexity to us<br class=\"br-wide\">keep the imagination",
+      m_h: "Leave the complexity to us<span class=\"sep\">, </span><br class=\"br-wide\">keep the imagination",
       m_p: "Exploring the frontier of AIGC, we turn complex AI into tools that simply work — empowering individuals and industries to co-create an imaginative future.",
       r_h: "Create responsibly",
       r_p: "Ethics and safety first. We use technology to bridge the digital divide — because warmth, in the end, must return to people and society.",
@@ -82,7 +82,7 @@
       f5_t: "抽象", f5_p: "技术的形状,由想象力决定。",
       v_h: "科技,应有温度",
       v_p: "AI 普惠不是口号。我们让智能融入日常,成为家的一部分——带来便捷,也带来陪伴的温暖。",
-      m_h: "把复杂留给我们<br class=\"br-wide\">把想象力还给你",
+      m_h: "把复杂留给我们<span class=\"sep\">,</span><br class=\"br-wide\">把想象力还给你",
       m_p: "探索 AIGC 前沿,将复杂的 AI 化为好用的工具,赋能每一个个体与行业,共创充满想象力的未来。",
       r_h: "负责任地创造",
       r_p: "以伦理与安全为先,用技术弥合数字鸿沟。科技的温度,最终要回到人与社会。",
@@ -127,7 +127,7 @@
       f5_t: "Abstrak", f5_p: "Bentuk teknologi ditentukan oleh imaginasi.",
       v_h: "Teknologi harus hangat",
       v_p: "AI untuk semua bukan sekadar slogan. Kami menjalin kecerdasan ke dalam kehidupan harian, menjadikannya sebahagian daripada rumah — membawa kemudahan dan kehangatan seorang teman.",
-      m_h: "Serahkan kerumitan kepada kami<br class=\"br-wide\">simpan imaginasi anda",
+      m_h: "Serahkan kerumitan kepada kami<span class=\"sep\">, </span><br class=\"br-wide\">simpan imaginasi anda",
       m_p: "Meneroka barisan hadapan AIGC, kami mengubah AI yang kompleks menjadi alat yang mudah digunakan — memperkasa individu dan industri untuk mencipta masa depan bersama.",
       r_h: "Mencipta dengan tanggungjawab",
       r_p: "Etika dan keselamatan diutamakan. Kami menggunakan teknologi untuk merapatkan jurang digital — kerana kehangatan akhirnya mesti kembali kepada manusia dan masyarakat.",
@@ -172,7 +172,7 @@
       f5_t: "அருவம்", f5_p: "தொழில்நுட்பத்தின் வடிவம் கற்பனையால் தீர்மானிக்கப்படுகிறது.",
       v_h: "தொழில்நுட்பம் கதகதப்பாக இருக்க வேண்டும்",
       v_p: "அனைவருக்கும் AI என்பது வெறும் முழக்கமல்ல. நுண்ணறிவை அன்றாட வாழ்வில் இழைத்து, வீட்டின் அங்கமாக்குகிறோம் — வசதியுடன், துணையின் கதகதப்பையும் கொண்டுவருகிறோம்.",
-      m_h: "சிக்கலை எங்களிடம் விடுங்கள்<br class=\"br-wide\">கற்பனையை வைத்திருங்கள்",
+      m_h: "சிக்கலை எங்களிடம் விடுங்கள்<span class=\"sep\">, </span><br class=\"br-wide\">கற்பனையை வைத்திருங்கள்",
       m_p: "AIGC-இன் எல்லையை ஆராய்ந்து, சிக்கலான AI-ஐ எளிதில் பயன்படுத்தும் கருவிகளாக மாற்றுகிறோம் — தனிநபர்களுக்கும் தொழில்களுக்கும் ஆற்றல் அளிக்கிறோம்.",
       r_h: "பொறுப்புடன் படைத்தல்",
       r_p: "நெறிமுறையும் பாதுகாப்பும் முதலில். டிஜிட்டல் இடைவெளியைக் குறைக்கத் தொழில்நுட்பத்தைப் பயன்படுத்துகிறோம் — ஏனெனில் கதகதப்பு இறுதியில் மனிதர்களிடமும் சமூகத்திடமும் திரும்ப வேண்டும்.",
@@ -216,10 +216,11 @@
   const canvas = document.getElementById("space");
   if (canvas && !reduced) {
     const ctx = canvas.getContext("2d");
+    const DPR = Math.min(devicePixelRatio || 1, 2);
     let W, H, stars = [], embers = [];
     function resize() {
-      W = canvas.width = canvas.offsetWidth * devicePixelRatio;
-      H = canvas.height = canvas.offsetHeight * devicePixelRatio;
+      W = canvas.width = canvas.offsetWidth * DPR;
+      H = canvas.height = canvas.offsetHeight * DPR;
       stars = Array.from({ length: Math.floor(W * H / 26000) }, () => ({
         x: Math.random() * W, y: Math.random() * H,
         r: Math.random() * 1.1 + .2,
@@ -232,9 +233,9 @@
       return {
         x: Math.random() * W,
         y: anywhere ? Math.random() * H : H + 10,
-        r: (Math.random() * 1.6 + .6) * devicePixelRatio,
-        vy: (.18 + Math.random() * .5) * devicePixelRatio,
-        vx: (Math.random() - .5) * .22 * devicePixelRatio,
+        r: (Math.random() * 1.6 + .6) * DPR,
+        vy: (.18 + Math.random() * .5) * DPR,
+        vx: (Math.random() - .5) * .22 * DPR,
         a: .12 + Math.random() * .4
       };
     }
@@ -245,7 +246,7 @@
       for (const s of stars) {
         const a = .18 + .5 * Math.abs(Math.sin(s.tw + t * s.sp));
         ctx.fillStyle = `rgba(255,232,210,${a})`;
-        ctx.fillRect(s.x, s.y, s.r * devicePixelRatio, s.r * devicePixelRatio);
+        ctx.fillRect(s.x, s.y, s.r * DPR, s.r * DPR);
       }
       for (let i = 0; i < embers.length; i++) {
         const e = embers[i];
@@ -305,6 +306,7 @@
       if (!video) {
         video = document.createElement("video");
         video.muted = true; video.loop = true; video.playsInline = true;
+        video.setAttribute("muted",""); video.setAttribute("playsinline","");
         video.src = host.dataset.video;
         video.addEventListener("error", () => { failed = true; video.remove(); video = null; }, { once: true });
         (slot || host).appendChild(video);
@@ -350,6 +352,7 @@
             if (!v) {
               v = document.createElement("video");
               v.muted = true; v.loop = true; v.playsInline = true;
+              v.setAttribute("muted",""); v.setAttribute("playsinline","");
               v.src = host.dataset.video;
               v.addEventListener("error", () => { v.remove(); vio.unobserve(host); }, { once: true });
               host.appendChild(v);
@@ -360,7 +363,17 @@
           }
         });
       }, { threshold: 0.25 });
-      Array.from(strip.children).forEach(f => vio.observe(f));
+      const visibleSet = new Set();
+      const vio2 = new IntersectionObserver(entries => {
+        entries.forEach(en => en.isIntersecting ? visibleSet.add(en.target) : visibleSet.delete(en.target));
+      }, { threshold: 0.25 });
+      Array.from(strip.children).forEach(f => { vio.observe(f); vio2.observe(f); });
+      setInterval(() => {
+        visibleSet.forEach(host => {
+          const v = host.querySelector("video");
+          if (v && v.paused) v.play().then(() => host.classList.add("playing")).catch(() => {});
+        });
+      }, 2000);
     }
 
     let paused = false, resumeTimer = null, half = 0;
