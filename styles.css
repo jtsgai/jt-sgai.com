@@ -303,6 +303,7 @@ p{text-wrap:pretty;line-break:strict;hanging-punctuation:allow-end}
 .arcs,.hero-ghost{will-change:transform;transition:transform .25s ease-out}
 
 /* ---- v3.1: hero background + portrait product media ---- */
+.hero > picture{display:contents}   /* pure CSS/HTML orientation-based image select, no layout box of its own */
 .hero-bg{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   opacity:.4;

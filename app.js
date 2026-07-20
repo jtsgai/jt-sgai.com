@@ -284,14 +284,8 @@
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
   /* ---------- hero media: portrait assets on phones, landscape otherwise ---------- */
+  /* hero-bg image is now selected declaratively via <picture>/media in index.html — no JS swap, no flash */
   const portrait = matchMedia("(orientation: portrait)").matches;
-
-  const heroBg = document.querySelector(".hero-bg");
-  if (heroBg && portrait) {
-    const probe = new Image();
-    probe.onload = () => { heroBg.src = "assets/ph_hero_m.jpg"; };
-    probe.src = "assets/ph_hero_m.jpg";   /* fallback: keep landscape if missing */
-  }
 
   const heroVideo = document.getElementById("heroVideo");
   if (heroVideo && !reduced) {

@@ -47,7 +47,10 @@
 
   <!-- ======= HERO ======= -->
   <section class="hero" id="top">
-    <img src="assets/ph_hero.jpg" alt="" class="hero-bg" aria-hidden="true">
+    <picture>
+      <source media="(orientation: portrait)" srcset="assets/ph_hero_m.jpg">
+      <img src="assets/ph_hero.jpg" alt="" class="hero-bg" aria-hidden="true" onerror="this.onerror=null;var s=this.closest('picture').querySelector('source');if(s)s.remove();this.src='assets/ph_hero.jpg';">
+    </picture>
     <canvas id="space" class="hero-space" aria-hidden="true"></canvas>
 
     <div class="hero-embrace" aria-hidden="true">
