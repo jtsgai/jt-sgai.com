@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>404 · JT M&C</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/logo-mark-96.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@300;400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C0906;--line:rgba(255,168,92,.16);--text:#F6EFE6;--muted:#A6988A;
+  --ember:#FF5A1E;--amber:#FFA85C;
+  --serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif;--grot:"Space Grotesk",var(--sans);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--ink);color:var(--text);font-family:var(--sans);font-weight:300;
+  min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:2rem;-webkit-font-smoothing:antialiased;
+}
+.logo{width:88px;height:auto;margin-bottom:2rem;filter:drop-shadow(0 0 24px rgba(255,90,30,.45))}
+.code{font-family:var(--grot);font-size:.72rem;letter-spacing:.4em;color:var(--ember);margin-bottom:1.1rem}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,4vw,2.1rem);line-height:1.6;margin-bottom:.3rem}
+p.en{color:var(--muted);font-size:.92rem;margin-bottom:2.4rem}
+.btn{
+  display:inline-block;font-family:var(--grot);font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;
+  color:#140B05;font-weight:700;background:linear-gradient(135deg,var(--amber),var(--ember));
+  border-radius:999px;padding:.95rem 2.2rem;box-shadow:0 8px 34px rgba(255,90,30,.35);transition:.3s;
+  text-decoration:none;
+}
+.btn:hover{box-shadow:0 8px 46px rgba(255,90,30,.55);transform:translateY(-1px)}
+</style>
+</head>
+<body>
+  <img class="logo" src="assets/logo-mark-256.png" alt="JT M&C">
+  <span class="code">404</span>
+  <h1>这一页还没被生成。</h1>
+  <p class="en">This page hasn't been generated yet.</p>
+  <a class="btn" href="index.html">返回主页 · Back to Home</a>
+</body>
+</html>

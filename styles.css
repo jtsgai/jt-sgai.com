@@ -382,6 +382,32 @@ html.lg .fs-plus{color:var(--muted)}
 }
 .belief-cta:hover{color:var(--ember);border-color:var(--ember)}
 
+/* ============ about / founder ============ */
+.about{
+  padding:clamp(4.5rem,10vw,7.5rem) clamp(1.2rem,5vw,4rem);
+  max-width:1200px;margin:0 auto;
+}
+.about-grid{
+  display:grid;grid-template-columns:5fr 7fr;
+  gap:clamp(1.8rem,4vw,3.5rem);align-items:center;
+}
+.about-media{
+  position:relative;border-radius:18px;overflow:hidden;background:var(--card);
+  aspect-ratio:4/5;max-height:520px;width:100%;justify-self:center;
+}
+.about-media img{width:100%;height:100%;object-fit:cover;display:block}
+.about-copy p{max-width:32em}
+.about-meta{
+  margin-top:1.3rem;font-family:var(--grot);font-size:.72rem;
+  letter-spacing:.04em;color:var(--muted);
+}
+@media (max-width:860px){
+  .about-grid{grid-template-columns:1fr}
+  .about-media{max-height:420px}
+  .about-copy{text-align:center}
+  .about-copy p{max-width:none}
+}
+
 .letter{
   padding:clamp(5rem,11vw,9rem) 1.5rem;
   background:
