@@ -412,6 +412,11 @@
     strip.addEventListener("touchend", () => resumeSoon(3500), { passive: true });
     document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); else resumeSoon(600); });
 
+    /* fix: pausing only on strip-level mouseenter isn't reliable enough — the marquee can keep
+       drifting under the cursor while a card's caption is still fading in, landing the highlight
+       on a neighboring (or duplicated) card. Pause immediately on every individual frame too. */
+    strip.querySelectorAll(".frame").forEach(f => f.addEventListener("mouseenter", pause));
+
     /* manual drag still works */
     let down = false, startX = 0, startScroll = 0, movedFlag = false, pressFrame = null;
     strip.addEventListener("pointerdown", e => {
