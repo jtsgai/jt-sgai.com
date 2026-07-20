@@ -411,10 +411,11 @@
     document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); else resumeSoon(600); });
 
     /* manual drag still works */
-    let down = false, startX = 0, startScroll = 0, movedFlag = false;
+    let down = false, startX = 0, startScroll = 0, movedFlag = false, pressFrame = null;
     strip.addEventListener("pointerdown", e => {
       down = true; movedFlag = false; pause();
       startX = e.clientX; startScroll = strip.scrollLeft;
+      pressFrame = e.target.closest(".frame[data-href]");
       strip.setPointerCapture(e.pointerId);
     });
     strip.addEventListener("pointermove", e => {
@@ -423,16 +424,14 @@
       if (Math.abs(dx) > 4) movedFlag = true;
       strip.scrollLeft = startScroll - dx;
     });
-    ["pointerup", "pointercancel"].forEach(ev =>
-      strip.addEventListener(ev, () => { down = false; resumeSoon(2500); })
-    );
-    strip.addEventListener("click", e => { if (movedFlag) e.preventDefault(); }, true);
-    /* frames are entrances: click navigates (drag-safe) */
-    strip.addEventListener("click", e => {
-      if (movedFlag) return;
-      const fr = e.target.closest(".frame[data-href]");
-      if (fr) location.href = fr.dataset.href;
+    strip.addEventListener("pointerup", () => {
+      if (!movedFlag && pressFrame) location.href = pressFrame.dataset.href;
+      pressFrame = null; down = false; resumeSoon(2500);
     });
+    strip.addEventListener("pointercancel", () => {
+      pressFrame = null; down = false; resumeSoon(2500);
+    });
+    strip.addEventListener("click", e => { if (movedFlag) e.preventDefault(); }, true);
     strip.addEventListener("keydown", e => {
       if (e.key === "Enter") {
         const fr = e.target.closest(".frame[data-href]");
