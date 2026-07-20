@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@600;700&family=Noto+Sans+Tamil:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@300;400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -93,43 +94,77 @@ a{color:inherit;text-decoration:none}
 .foot{border-top:1px solid var(--line);padding:1.6rem;text-align:center;font-size:.78rem;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .reel a{display:block;width:100%;height:100%}
+
+/* ============ v26: reel click fix + nav polish + lang toggle + Tamil fallback ============ */
+.reel video{pointer-events:none}
+.nav{transition:background .35s}
+.nav.scrolled{background:rgba(12,9,6,.94)}
+.nav-back{
+  font-family:var(--grot);font-size:.78rem;letter-spacing:.16em;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:.4rem 1rem .4rem .85rem;
+  background:rgba(12,9,6,.3);transition:.25s;display:flex;align-items:center;gap:.5rem;
+}
+.nav-back:hover{color:var(--amber);border-color:var(--amber);background:rgba(255,90,30,.1)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-toggle{
+  font-family:var(--grot);font-size:.72rem;letter-spacing:.12em;
+  color:var(--amber);background:none;border:1px solid var(--line);
+  border-radius:999px;padding:.32rem .8rem;cursor:pointer;transition:.25s;
+}
+.lang-toggle:hover{border-color:var(--amber);background:rgba(255,90,30,.08)}
+select.lang-toggle{
+  appearance:none;-webkit-appearance:none;
+  padding:.32rem 1.5rem .32rem .8rem;
+  background:rgba(12,9,6,.4) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='6'><path d='M0 0l4 6 4-6z' fill='%23FFA85C'/></svg>") no-repeat right .6rem center;
+}
+select.lang-toggle option{background:#1B140D;color:var(--text)}
+:lang(ta) body,:lang(ta) p{font-family:"Noto Sans Tamil",var(--sans)}
+:lang(ta) .hero-copy h1,:lang(ta) .birth-head h2,:lang(ta) .note blockquote,:lang(ta) .cta h2{font-family:"Noto Serif Tamil",var(--serif)}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="../index.html#lab">← <span>影像实验</span></a>
-  <a href="../index.html"><img src="../assets/logo-mark-96.png" alt="JT M&C"></a>
+<nav class="nav" id="nav">
+  <a class="nav-back" href="../index.html#lab">← <span data-i18n="nav_back">影像实验</span></a>
+  <div class="nav-right">
+    <a href="../index.html"><img src="../assets/logo-mark-96.png" alt="JT M&C"></a>
+    <select class="lang-toggle" id="langSel" aria-label="Language">
+      <option value="en">EN</option>
+      <option value="zh">中文</option>
+      <option value="ms">MS</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+  </div>
 </nav>
 
 <!-- 成片即门面 -->
 <header class="hero">
-  <video src="../gen/warmth.mp4" autoplay muted loop playsinline></video>
+  <video class="hero-video" poster="../assets/ph_warmth.jpg" src="../gen/warmth.mp4" data-hd="../gen/hd/warmth.mp4" autoplay muted loop playsinline></video>
   <div class="hero-copy">
     <span class="grotl">Film Study · 01</span>
-    <h1>温<em>度</em></h1>
-    <p>当机器学会凝视一盏灯下的晚餐。一部关于“在场”的微型习作。</p>
+    <h1 data-i18n="hero_h1">温<em>度</em></h1>
+    <p data-i18n="hero_p">当机器学会凝视一盏灯下的晚餐。一部关于“在场”的微型习作。</p>
   </div>
 </header>
 
 <!-- 硬数据就是广告 -->
 <section class="facts">
-  <div class="fact"><span class="grotl">制作周期</span><b>48 小时</b></div>
-  <div class="fact"><span class="grotl">生成管线</span><b>gpt-image-2 × Kling 3.0</b></div>
-  <div class="fact"><span class="grotl">画幅</span><b>16 : 9</b></div>
-  <div class="fact"><span class="grotl">交付</span><b>1080P 无缝循环</b></div>
+  <div class="fact"><span class="grotl" data-i18n="fact_time">制作周期</span><b data-i18n="fact_time_v">48 小时</b></div>
+  <div class="fact"><span class="grotl" data-i18n="fact_pipe">生成管线</span><b>gpt-image-2 × Kling 3.0</b></div>
+  <div class="fact"><span class="grotl" data-i18n="fact_ratio">画幅</span><b>16 : 9</b></div>
+  <div class="fact"><span class="grotl" data-i18n="fact_deliver">交付</span><b data-i18n="fact_deliver_v">1080P 无缝循环</b></div>
 </section>
 
 <!-- 签名模块:一帧的诞生 -->
 <section class="birth">
   <div class="birth-head">
     <span class="grotl">Birth of a Frame</span>
-    <h2>一帧的诞生</h2>
-    <p>从一句话,到一张图,到一段会呼吸的画面——这就是东西在我们这里诞生的方式。</p>
+    <h2 data-i18n="birth_h">一帧的诞生</h2>
+    <p data-i18n="birth_p">从一句话,到一张图,到一段会呼吸的画面——这就是东西在我们这里诞生的方式。</p>
   </div>
   <div class="stages">
     <div class="stage">
-      <div class="stage-tag"><span class="grotl" style="color:var(--ember)">01 提示词</span><span>PROMPT</span></div>
+      <div class="stage-tag"><span class="grotl" style="color:var(--ember)" data-i18n="stage1_tag">01 提示词</span><span>PROMPT</span></div>
       <div class="stage-body stage-prompt">
         <code>A family dinner table seen from a doorway, one warm pendant lamp, steam rising from bowls, a small robot's silhouette watching from the edge of frame.</code>
         <code>Steam rising slowly, lamp glow breathing, slight handheld drift. Warm and quiet.<span class="caret"></span></code>
@@ -137,12 +172,12 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="arrow">→</div>
     <div class="stage">
-      <div class="stage-tag"><span class="grotl" style="color:var(--ember)">02 首帧</span><span>FIRST FRAME</span></div>
+      <div class="stage-tag"><span class="grotl" style="color:var(--ember)" data-i18n="stage2_tag">02 首帧</span><span>FIRST FRAME</span></div>
       <div class="stage-body"><img src="../assets/ph_warmth.jpg" alt="首帧图"></div>
     </div>
     <div class="arrow">→</div>
     <div class="stage">
-      <div class="stage-tag"><span class="grotl" style="color:var(--ember)">03 成片</span><span>FILM</span></div>
+      <div class="stage-tag"><span class="grotl" style="color:var(--ember)" data-i18n="stage3_tag">03 成片</span><span>FILM</span></div>
       <div class="stage-body"><video src="../gen/warmth.mp4" autoplay muted loop playsinline></video></div>
     </div>
   </div>
@@ -152,32 +187,71 @@ a{color:inherit;text-decoration:none}
 <section class="note">
   <div>
     <span class="grotl">Curator's Note</span>
-    <blockquote>“陪伴不是宏大的事。<br>是灯亮着,饭冒着热气,有什么安静地看着这一切。”</blockquote>
-    <p>这部习作只做一件事:让镜头学会不打扰。蒸汽的速度、灯光的呼吸、画框边缘那个不出声的轮廓——都是“在场”的练习。</p>
+    <blockquote data-i18n="note_q">“陪伴不是宏大的事。<br>是灯亮着,饭冒着热气,有什么安静地看着这一切。”</blockquote>
+    <p data-i18n="note_p">这部习作只做一件事:让镜头学会不打扰。蒸汽的速度、灯光的呼吸、画框边缘那个不出声的轮廓——都是“在场”的练习。</p>
   </div>
 </section>
 
 <!-- 更多实验 -->
 <section class="more">
-  <span class="grotl">更多实验 · More Studies</span>
+  <span class="grotl" data-i18n="more_h">更多实验</span>
   <div class="reel">
-    <figure data-v="../gen/interaction.mp4"><a href="dialogue.html"><img src="../assets/ph_dialogue.jpg" alt=""><figcaption>对话</figcaption></a></figure>
-    <figure data-v="../gen/flow.mp4"><a href="flow.html"><img src="../assets/ph_flow.jpg" alt=""><figcaption>流</figcaption></a></figure>
-    <figure data-v="../gen/nebula.mp4"><a href="nebula.html"><img src="../assets/ph_nebula.jpg" alt=""><figcaption>星云</figcaption></a></figure>
+    <figure data-v="../gen/interaction.mp4"><a href="dialogue.html"><img src="../assets/ph_dialogue.jpg" alt=""><figcaption data-i18n="f2_t">对话</figcaption></a></figure>
+    <figure data-v="../gen/flow.mp4"><a href="flow.html"><img src="../assets/ph_flow.jpg" alt=""><figcaption data-i18n="f3_t">流</figcaption></a></figure>
+    <figure data-v="../gen/nebula.mp4"><a href="nebula.html"><img src="../assets/ph_nebula.jpg" alt=""><figcaption data-i18n="f4_t">星云</figcaption></a></figure>
   </div>
 </section>
 
 <!-- 委托入口 -->
 <section class="cta">
   <span class="grotl">Commission</span>
-  <h2>想要一部这样的?</h2>
-  <p>周期与报价透明。四种语言版本,不加倍收费——因为管线在我们自己手里。</p>
-  <a class="btn" href="mailto:info@jt-sgai.com">开始一次委托 →</a>
+  <h2 data-i18n="cta_h">想要一部这样的?</h2>
+  <p data-i18n="cta_p">周期与报价透明。四种语言版本,不加倍收费——因为管线在我们自己手里。</p>
+  <a class="btn" href="mailto:info@jt-sgai.com" data-i18n="cta_btn">开始一次委托 →</a>
 </section>
 
-<footer class="foot">JT M&C PTE. LTD. · <a href="../index.html#lab">影像实验</a> · <a href="mailto:info@jt-sgai.com">info@jt-sgai.com</a></footer>
+<footer class="foot">JT M&C PTE. LTD. · <a href="../index.html#lab" data-i18n="nav_back">影像实验</a> · <a href="mailto:info@jt-sgai.com">info@jt-sgai.com</a></footer>
 
 <script>
+(function(){
+  var I18N = {
+    en: {"nav_back": "Film Lab", "fact_time": "Production Time", "fact_time_v": "48 hours", "fact_pipe": "Pipeline", "fact_ratio": "Aspect Ratio", "fact_deliver": "Delivery", "fact_deliver_v": "1080P Seamless Loop", "birth_h": "The Birth of a Frame", "birth_p": "From a sentence, to an image, to a breathing frame — this is how things are born here.", "stage1_tag": "01 Prompt", "stage2_tag": "02 First Frame", "stage3_tag": "03 Film", "more_h": "More Studies", "cta_h": "Want one like this?", "cta_p": "Transparent timeline and pricing. Four language versions, no extra cost — because we own the pipeline end to end.", "cta_btn": "Start a Commission →", "f1_t": "Warmth", "f2_t": "Dialogue", "f3_t": "Flow", "f4_t": "Nebula", "f5_t": "Abstract", "_lang": "en", "hero_h1": "<em>Warmth</em>", "hero_p": "When a machine learns to gaze at dinner under a lamp. A micro study on presence.", "note_q": "\"Companionship isn't a grand thing.<br>It's a lamp still on, a bowl still steaming, something quietly watching over it all.\"", "note_p": "This study does one thing: teach the camera not to intrude. The pace of the steam, the breathing of the lamp, the silent silhouette at the frame's edge — all of it is a practice in presence.", "_title": "Warmth · Film Studies — JT M&C"},
+    zh: {"nav_back": "影像实验", "fact_time": "制作周期", "fact_time_v": "48 小时", "fact_pipe": "生成管线", "fact_ratio": "画幅", "fact_deliver": "交付", "fact_deliver_v": "1080P 无缝循环", "birth_h": "一帧的诞生", "birth_p": "从一句话,到一张图,到一段会呼吸的画面——这就是东西在我们这里诞生的方式。", "stage1_tag": "01 提示词", "stage2_tag": "02 首帧", "stage3_tag": "03 成片", "more_h": "更多实验", "cta_h": "想要一部这样的?", "cta_p": "周期与报价透明。四种语言版本,不加倍收费——因为管线在我们自己手里。", "cta_btn": "开始一次委托 →", "f1_t": "温度", "f2_t": "对话", "f3_t": "流", "f4_t": "星云", "f5_t": "抽象", "_lang": "zh-CN", "hero_h1": "温<em>度</em>", "hero_p": "当机器学会凝视一盏灯下的晚餐。一部关于“在场”的微型习作。", "note_q": "“陪伴不是宏大的事。<br>是灯亮着,饭冒着热气,有什么安静地看着这一切。”", "note_p": "这部习作只做一件事:让镜头学会不打扰。蒸汽的速度、灯光的呼吸、画框边缘那个不出声的轮廓——都是“在场”的练习。", "_title": "温度 Warmth · 影像实验 — JT M&C"},
+    ms: {"nav_back": "Makmal Filem", "fact_time": "Tempoh Pengeluaran", "fact_time_v": "48 jam", "fact_pipe": "Saluran Penjanaan", "fact_ratio": "Nisbah Bingkai", "fact_deliver": "Penghantaran", "fact_deliver_v": "1080P Gelung Lancar", "birth_h": "Kelahiran Satu Bingkai", "birth_p": "Daripada sepatah ayat, kepada satu imej, kepada satu bingkai yang bernafas — begitulah sesuatu dilahirkan di sini.", "stage1_tag": "01 Gesaan", "stage2_tag": "02 Bingkai Pertama", "stage3_tag": "03 Filem", "more_h": "Kajian Lain", "cta_h": "Mahukan satu seperti ini?", "cta_p": "Garis masa dan harga yang telus. Empat versi bahasa, tiada caj tambahan — kerana saluran paip milik kami sepenuhnya.", "cta_btn": "Mulakan Tugasan →", "f1_t": "Kehangatan", "f2_t": "Dialog", "f3_t": "Aliran", "f4_t": "Nebula", "f5_t": "Abstrak", "_lang": "ms", "hero_h1": "<em>Kehangatan</em>", "hero_p": "Apabila mesin belajar merenung makan malam di bawah cahaya lampu. Satu kajian mikro tentang kehadiran.", "note_q": "\"Menemani bukanlah sesuatu yang besar.<br>Ia adalah lampu yang masih menyala, mangkuk yang masih berasap, sesuatu yang senyap-senyap memerhati semuanya.\"", "note_p": "Kajian ini hanya melakukan satu perkara: mengajar kamera untuk tidak mengganggu. Kelajuan wap, nafas cahaya lampu, siluet senyap di tepi bingkai — semuanya adalah latihan kehadiran.", "_title": "Kehangatan · Film Studies — JT M&C"},
+    ta: {"nav_back": "திரை ஆய்வகம்", "fact_time": "தயாரிப்பு காலம்", "fact_time_v": "48 மணி நேரம்", "fact_pipe": "உற்பத்தி பாதை", "fact_ratio": "காட்சி விகிதம்", "fact_deliver": "வழங்கல்", "fact_deliver_v": "1080P தடையற்ற சுழற்சி", "birth_h": "ஒரு காட்சியின் பிறப்பு", "birth_p": "ஒரு வாக்கியத்திலிருந்து, ஒரு படமாக, சுவாசிக்கும் ஒரு காட்சியாக — இங்கே பொருட்கள் பிறக்கும் விதம் இதுவே.", "stage1_tag": "01 வழிமுறை", "stage2_tag": "02 முதல் காட்சி", "stage3_tag": "03 திரைப்படம்", "more_h": "மேலும் ஆய்வுகள்", "cta_h": "இது போன்ற ஒன்று வேண்டுமா?", "cta_p": "காலவரிசையும் விலையும் தெளிவானவை. நான்கு மொழி பதிப்புகள், கூடுதல் கட்டணம் இல்லை — ஏனெனில் முழு உற்பத்தி பாதையும் எங்கள் கையில் உள்ளது.", "cta_btn": "ஒரு பணியைத் தொடங்கு →", "f1_t": "கதகதப்பு", "f2_t": "உரையாடல்", "f3_t": "ஓட்டம்", "f4_t": "நெபுலா", "f5_t": "அருவம்", "_lang": "ta", "hero_h1": "<em>கதகதப்பு</em>", "hero_p": "விளக்கின் கீழ் இரவு உணவை இயந்திரம் பார்க்கக் கற்கும் போது. “இருப்பு” பற்றிய ஒரு சிறு ஆய்வு.", "note_q": "“துணையாக இருப்பது பெரிய விஷயமல்ல.<br>விளக்கு எரிந்துகொண்டிருப்பது, சூடு பறக்கும் சாப்பாடு, இவை அனைத்தையும் அமைதியாகக் கவனிக்கும் ஏதோ ஒன்று.”", "note_p": "இந்த ஆய்வு ஒரே ஒரு காரியத்தைச் செய்கிறது: குறுக்கிடாமல் இருக்க கேமராவைக் கற்பிக்கிறது. நீராவியின் வேகம், விளக்கின் சுவாசம், சட்டத்தின் ஓரத்தில் இருக்கும் அமைதியான உருவம் — இவை அனைத்தும் “இருப்பு” என்பதற்கான பயிற்சிகள்.", "_title": "கதகதப்பு · Film Studies — JT M&C"}
+  };
+  var lang = "en";
+  try { lang = localStorage.getItem("jtmc-lang") || "en"; } catch (e) {}
+  if (!I18N[lang]) lang = "en";
+  var langSel = document.getElementById("langSel");
+  function applyLang(l) {
+    var dict = I18N[l];
+    document.querySelectorAll("[data-i18n]").forEach(function(el) {
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    document.documentElement.lang = dict._lang;
+    document.title = dict._title;
+    if (langSel) langSel.value = l;
+    try { localStorage.setItem("jtmc-lang", l); } catch (e) {}
+  }
+  if (langSel) langSel.addEventListener("change", function() { lang = langSel.value; applyLang(lang); });
+  applyLang(lang);
+
+  /* nav goes near-solid past one viewport of scroll */
+  var nav = document.getElementById("nav");
+  function onScroll() { nav.classList.toggle("scrolled", window.scrollY > window.innerHeight * 0.9); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* HD hero video, fall back to compressed on error */
+  document.querySelectorAll("video[data-hd]").forEach(function(v) {
+    var sd = v.getAttribute("src");
+    v.src = v.dataset.hd;
+    v.addEventListener("error", function() { v.src = sd; }, { once: true });
+  });
+})();
+
 document.querySelectorAll('.reel figure').forEach(f=>{
   let v=null;
   const play=()=>{
