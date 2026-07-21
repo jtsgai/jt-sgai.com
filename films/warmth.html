@@ -139,7 +139,10 @@ select.lang-toggle option{background:#1B140D;color:var(--text)}
 
 <!-- 成片即门面 -->
 <header class="hero">
-  <video class="hero-video" poster="../assets/ph_warmth.jpg" src="../gen/warmth.mp4" data-hd="../gen/hd/warmth.mp4" autoplay muted loop playsinline></video>
+  <video class="hero-video" poster="../assets/ph_warmth.jpg" autoplay muted loop playsinline>
+    <source src="../gen/hd/warmth.mp4">
+    <source src="../gen/warmth.mp4">
+  </video>
   <div class="hero-copy">
     <span class="grotl">Film Study · 01</span>
     <h1 data-i18n="hero_h1">温<em>度</em></h1>
@@ -244,22 +247,6 @@ select.lang-toggle option{background:#1B140D;color:var(--text)}
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* HD hero video, fall back to compressed on error */
-  document.querySelectorAll("video[data-hd]").forEach(function(v) {
-    var sd = v.getAttribute("src");
-    v.src = v.dataset.hd;
-    v.addEventListener("error", function() { v.src = sd; }, { once: true });
-  });
-
-  /* mobile autoplay reliability: force muted/playsinline (attr+prop) and explicit play() once ready */
-  document.querySelectorAll(".hero-video, .stage-body video").forEach(function(v) {
-    v.muted = true; v.playsInline = true;
-    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
-    var tryPlay = function() { v.play().catch(function() {}); };
-    if (v.readyState >= 2) tryPlay();
-    v.addEventListener("canplay", tryPlay);
-    v.addEventListener("loadeddata", tryPlay);
-  });
 })();
 
 document.querySelectorAll('.reel figure').forEach(f=>{
