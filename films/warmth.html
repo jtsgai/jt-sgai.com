@@ -250,6 +250,16 @@ select.lang-toggle option{background:#1B140D;color:var(--text)}
     v.src = v.dataset.hd;
     v.addEventListener("error", function() { v.src = sd; }, { once: true });
   });
+
+  /* mobile autoplay reliability: force muted/playsinline (attr+prop) and explicit play() once ready */
+  document.querySelectorAll(".hero-video, .stage-body video").forEach(function(v) {
+    v.muted = true; v.playsInline = true;
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", "");
+    var tryPlay = function() { v.play().catch(function() {}); };
+    if (v.readyState >= 2) tryPlay();
+    v.addEventListener("canplay", tryPlay);
+    v.addEventListener("loadeddata", tryPlay);
+  });
 })();
 
 document.querySelectorAll('.reel figure').forEach(f=>{

@@ -611,16 +611,19 @@ h1,h2,h3{overflow-wrap:break-word}
 @media (hover:none){.frame-cta{opacity:1;transform:none}}  /* mobile: always visible */
 .frame figcaption{align-items:baseline}
 
-/* ============ v27: mobile captions — title + corner arrow only, no hover to rely on ============ */
+/* ============ v28: mobile captions — no text on screen except a small "Click" corner hint ============ */
 @media (hover:none){
-  .frame figcaption{align-items:center}
-  .frame figcaption span:not(.frame-cta){display:none}
-  .frame b{font-size:.85rem}
+  .frame figcaption{background:none;padding:0}
+  .frame b,.frame figcaption span:not(.frame-cta){display:none}
   .frame-cta{
-    width:1.7rem;height:1.7rem;flex:0 0 auto;
-    display:flex;align-items:center;justify-content:center;
+    position:absolute;right:.7rem;bottom:.7rem;margin-left:0;
     font-size:0;color:transparent;
-    background:rgba(255,90,30,.14);border:1px solid var(--line);border-radius:50%;
+    background:rgba(12,9,6,.55);border:1px solid var(--line);
+    padding:.32rem .65rem;border-radius:999px;
   }
-  .frame-cta::after{content:"→";font-size:.8rem;color:var(--amber)}
+  .frame-cta::after{
+    content:"Click";
+    font-family:var(--grot);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--amber);
+  }
 }

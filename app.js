@@ -361,6 +361,7 @@
               v.setAttribute("muted",""); v.setAttribute("playsinline","");
               v.src = host.dataset.video;
               v.addEventListener("error", () => { v.remove(); vio.unobserve(host); }, { once: true });
+              v.addEventListener("canplay", () => { v.play().then(() => host.classList.add("playing")).catch(() => {}); });
               host.appendChild(v);
             }
             v.play().then(() => host.classList.add("playing")).catch(() => {});
