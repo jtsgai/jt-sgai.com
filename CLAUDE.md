@@ -33,6 +33,16 @@
 - `.env`(OpenAI / Kling 的 key)永远不进 git 仓库,`.gitignore` 里已经有 `.env`,新建脚本 / 配置文件涉及密钥时先确认走的是 `.env` 而不是硬编码
 - key 只在本机被脚本读取,不要以任何形式(包括粘贴进对话、写进注释)外泄
 
+## 部署流程
+
+- 当前这个 iCloud 目录(`jt-sgai-site/`)是**工作副本,本身不是 git 仓库**——不要在这里 `git init`。原因:iCloud 会持续同步文件,同步过程中读写 `.git` 内部对象/引用文件极易造成仓库损坏
+- 真正部署的 git 仓库是 GitHub 上的 `jtsgai/jt-sgai.com`(GitHub Pages 直接从这个仓库发布),所有推送都要落到这里
+- 标准流程,每次改动后都照此执行,不要跳步:
+  1. 克隆到临时目录:`gh repo clone jtsgai/jt-sgai.com <临时目录>`(临时目录用完即扔,不要建在 iCloud 同步范围内)
+  2. 把这次改动涉及的文件从 `jt-sgai-site/` 拷贝进临时目录里对应路径(只拷改动到的文件,不要整目录覆盖,避免把本地未提交的其他草稿一起带上去)
+  3. 在临时目录里 `git add` 改动的文件、`git commit`、`git push`(commit 信息与检查要求见下面「推送规范」)
+  4. 推送成功后删除临时目录,不留残留 clone
+
 ## 推送规范
 
 - commit 信息用英文,简洁说明这次改了什么(参考历史:`Redesign: The Embrace`、`Mobile portrait hero`、`Compress portrait hero video`)
