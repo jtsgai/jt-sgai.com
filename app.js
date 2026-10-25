@@ -49,6 +49,8 @@
       n_cta: "Walk with us →",
       f_tag: "Built with warmth in Singapore",
       f_addr: "Central Business District, Singapore",
+      f_si: "Part of the SuperIntelligence SG ecosystem",
+      f_rfp: "Red Fun Planet",
       _lang: "en",
       _title: "JT M&C — Let AI Accompany Everyone in Need"
     },
@@ -97,6 +99,8 @@
       n_cta: "与我们同行 →",
       f_tag: "怀着温度,造于新加坡",
       f_addr: "Central Business District, Singapore",
+      f_si: "SuperIntelligence SG 生态成员",
+      f_rfp: "Red Fun Planet",
       _lang: "zh-CN",
       _title: "JT M&C — 让 AI 陪伴每一个需要的人"
     },
@@ -145,6 +149,8 @@
       n_cta: "Melangkah bersama kami →",
       f_tag: "Dibina dengan kehangatan di Singapura",
       f_addr: "Central Business District, Singapura",
+      f_si: "Sebahagian daripada ekosistem SuperIntelligence SG",
+      f_rfp: "Red Fun Planet",
       _lang: "ms",
       _title: "JT M&C — Biar AI Menemani Setiap Insan"
     },
@@ -193,6 +199,8 @@
       n_cta: "எங்களுடன் நடங்கள் →",
       f_tag: "சிங்கப்பூரில் கதகதப்புடன் உருவாக்கப்பட்டது",
       f_addr: "Central Business District, சிங்கப்பூர்",
+      f_si: "SuperIntelligence SG சூழலமைப்பின் ஒரு பகுதி",
+      f_rfp: "Red Fun Planet",
       _lang: "ta",
       _title: "JT M&C — தேவையுள்ள ஒவ்வொருவருக்கும் AI துணை"
     }
